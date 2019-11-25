@@ -1,0 +1,67 @@
+
+server:
+  contextPath:
+
+result:
+    SUCCESSFUL: successful
+    FAIL: fail
+    UNKNOWN_DATABASE_ERROR: error in fetching data from database
+    UNKNOWN_TRANSACTION_ERROR: some unknown error raised during this transaction
+    REQUIREDFIELD : is required field
+    USEREXIST : user name already taken
+    NOAVAILABLEDATA : No data available
+    CHECKFIELD : Please check name of fields, it may have spelling mistake
+    TOKEN_NOTVALID : Authorization token is not valid or it has expired
+    ACCESS_DENIED :  Sorry! you don't have permission to access this resource
+    ROLE_ID_REQUIRED : Role ID is not valid
+    FIELD_FORMAT_EXCEPTION : field value is not valid
+
+
+database:
+    KEYSPACE: projectmanagement
+    CONTACTPOINT: 127.0.0.1
+    PORT: 9042
+
+
+tables:
+    meeting : meeting
+    meeting_by_project: meeting_by_project
+    meeting_by_feature : meeting_by_feature
+    member_by_role : member_by_role
+    member : member
+    meeting_by_release : meeting_by_release
+    report_by_meeting : report_by_meeting
+    notification_by_meeting : notification_by_meeting
+
+
+    permission : permission
+    role : role
+
+    issue : issue
+    issue_by_release : issue_by_release
+    issue_by_task : issue_by_task
+
+    project : project
+    role_by_project : role_by_project
+    feature_by_project : feature_by_project
+    release_by_project : release_by_project
+    mission_by_project : mission_by_project
+    subfeature_by_project : subfeature_by_project
+    vision_by_project : vision_by_project
+    project_all_details : project_all_details
+    project_report : project_report
+    project_notification : project_notification
+
+    task : task
+    task_by_project : task_by_project
+    subfeature_by_task : subfeature_by_task
+    task_by_user_implementer : task_by_user_implementer
+    task_by_user_responsible : task_by_user_responsible
+
+    notification_by_task : notification_by_task
+    notification_by_user : notification_by_user
+
+    report_by_user : report_by_user
+    report_by_task : report_by_task
+
+    attachment : attachment
