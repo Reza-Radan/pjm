@@ -1,6 +1,6 @@
 package com.progetto.projectmanagement.controller.meeting;
 
-import com.progetto.projectmanagement.domain.meeting.MeetingByFeature;
+import com.progetto.projectmanagement.domain.meeting.InviteMeeting;
 import com.progetto.projectmanagement.domain.ResponseModel;
 import com.progetto.projectmanagement.domain.meeting.MeetingByProject;
 import com.progetto.projectmanagement.domain.meeting.MeetingByRelease;
@@ -14,7 +14,7 @@ public interface IMeetingController {
     ResponseModel getMeetingByRelease(UUID releaseId,String lang, HttpServletResponse httpServletResponse);
     ResponseModel getMeetingByMember(UUID memberId,String lang, HttpServletResponse httpServletResponse);
 
-    ResponseModel addMeetingByFeature(MeetingByFeature meetingByFeature, String lang, HttpServletResponse httpServletResponse);
+    ResponseModel addMeetingByFeature(InviteMeeting inviteMeeting, String lang, HttpServletResponse httpServletResponse);
     ResponseModel addMeetingByRelease(MeetingByRelease meetingByRelease,String lang, HttpServletResponse httpServletResponse);
     ResponseModel addMeetingByProject(MeetingByProject meetingByProject, String lang, HttpServletResponse httpServletResponse);
 }

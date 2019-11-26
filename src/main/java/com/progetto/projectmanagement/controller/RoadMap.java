@@ -13,14 +13,14 @@
 //import ResponseModel;
 //import ir.dabacenter.projectmanagement.domain.issue.IssueByRelease;
 //import ir.dabacenter.projectmanagement.domain.issue.IssueByTask;
-//import MeetingByFeature;
+//import InviteMeeting;
 //import MeetingByRelease;
 //import ir.dabacenter.projectmanagement.domain.member.MemberService;
 //import ir.dabacenter.projectmanagement.domain.permission.PermissionService;
 //import ir.dabacenter.projectmanagement.domain.project.*;
-//import ReportByMeeting;
-//import ReportByTask;
-//import ReportByUser;
+//import ProjectReport;
+//import TaskReport;
+//import UserReport;
 //import ir.dabacenter.projectmanagement.domain.task.TaskController;
 //import UserPassSecurityModel;
 //import IFileManagerService;
@@ -104,7 +104,7 @@
 //	 *
 //	 * @param release
 //	 */
-//	public ResponseModel addProjectRelease(ReleaseByProject release) {
+//	public ResponseModel addProjectRelease(ProjectStockholder release) {
 //		// TODO - implement RoadMap.addProjectRelease
 //		throw new UnsupportedOperationException();
 //	}
@@ -288,7 +288,7 @@
 //	 *
 //	 * @param reposrtTask
 //	 */
-//	public ResponseModel addReportByTask(ReportByTask reposrtTask) {
+//	public ResponseModel addReportByTask(TaskReport reposrtTask) {
 //		// TODO - implement RoadMap.addReportByTask
 //		throw new UnsupportedOperationException();
 //	}
@@ -297,7 +297,7 @@
 //	 *
 //	 * @param reportByUser
 //	 */
-//	public ResponseModel addReportByUser(ReportByUser reportByUser) {
+//	public ResponseModel addReportByUser(UserReport reportByUser) {
 //		// TODO - implement RoadMap.addReportByUser
 //		throw new UnsupportedOperationException();
 //	}
@@ -306,7 +306,7 @@
 //	 *
 //	 * @param reportByMeeting
 //	 */
-//	public ResponseModel addReportByMeeting(ReportByMeeting reportByMeeting) {
+//	public ResponseModel addReportByMeeting(ProjectReport reportByMeeting) {
 //		// TODO - implement RoadMap.addReportByMeeting
 //		throw new UnsupportedOperationException();
 //	}
@@ -384,7 +384,7 @@
 //	 *
 //	 * @param meetingByFeature
 //	 */
-//	public ResponseModel addMeetingByFeature(MeetingByFeature meetingByFeature) {
+//	public ResponseModel addMeetingByFeature(InviteMeeting meetingByFeature) {
 //		// TODO - implement RoadMap.addMeetingByFeature
 //		throw new UnsupportedOperationException();
 //	}

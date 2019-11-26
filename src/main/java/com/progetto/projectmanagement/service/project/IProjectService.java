@@ -132,7 +132,7 @@ public interface IProjectService {
 	 * 
 	 * @param release
 	 */
-	ResultModel addProjectRelease(ReleaseByProject release);
+	ResultModel addProjectRelease(ProjectStockholder release);
 
 	/**
 	 * 
@@ -181,7 +181,7 @@ public interface IProjectService {
 
 	public ResultModel updateVision(VisionByProject visionByProject) ;
 
-	public ResultModel updateRelease(ReleaseByProject releaseByProject);
+	public ResultModel updateRelease(ProjectStockholder projectStockholder);
 
 	public ResultModel updateRole(RoleByProject roleByProject);
 

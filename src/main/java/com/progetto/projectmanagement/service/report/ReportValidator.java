@@ -1,19 +1,18 @@
 package com.progetto.projectmanagement.service.report;
 
 import com.progetto.projectmanagement.domain.report.ProjectReport;
-import com.progetto.projectmanagement.domain.report.ReportByMeeting;
 import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResultModel;
-import com.progetto.projectmanagement.domain.report.ReportByTask;
-import com.progetto.projectmanagement.domain.report.ReportByUser;
+import com.progetto.projectmanagement.domain.report.TaskReport;
+import com.progetto.projectmanagement.domain.report.UserReport;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;
 
 public class ReportValidator {
 
-//    public ResponseModel addReportByTask(ReportByTask reposrtTask) {
-//    public ResponseModel addReportByUser(ReportByUser reportByUser) {
+//    public ResponseModel addReportByTask(TaskReport reposrtTask) {
+//    public ResponseModel addReportByUser(UserReport reportByUser) {
 //    public ResponseModel getReportByProject(UUID projectId) {
 //    public ResponseModel getReportByTask(UUID taskId, UUID projectId) {
 //    public ResponseModel getReportByUser(UUID userId) {
@@ -53,7 +52,7 @@ public class ReportValidator {
     }
 
 
-    public ResultModel reportMeetingValidate(ReportByMeeting projectMeeting){
+    public ResultModel reportMeetingValidate(ProjectReport projectMeeting){
 
         if(!validateField(projectMeeting.getProjectId())) {
             resultModel.setError(1);
@@ -97,7 +96,7 @@ public class ReportValidator {
 
 
 
-    public ResultModel reportTaskValidate(ReportByTask projectMeeting){
+    public ResultModel reportTaskValidate(TaskReport projectMeeting){
 
         if(!validateField(projectMeeting.getProjectId())) {
             resultModel.setError(1);
@@ -131,7 +130,7 @@ public class ReportValidator {
         return resultModel;
     }
 
-    public ResultModel reportUserValidate(ReportByUser projectByUser){
+    public ResultModel reportUserValidate(UserReport projectByUser){
 
         if(!validateField(projectByUser.getUserId())) {
             resultModel.setError(1);

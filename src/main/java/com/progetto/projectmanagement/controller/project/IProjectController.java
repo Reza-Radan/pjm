@@ -24,7 +24,7 @@ public interface IProjectController {
     ResponseModel addProject(Project project, HttpServletResponse httpServletResponse);
     ResponseModel addProjectMission(MissionByProject mission, HttpServletResponse httpServletResponse);
     ResponseModel addProjectVision(VisionByProject vision, HttpServletResponse httpServletResponse);
-    ResponseModel addProjectRelease(ReleaseByProject release, HttpServletResponse httpServletResponse);
+    ResponseModel addProjectRelease(ProjectStockholder release, HttpServletResponse httpServletResponse);
     ResponseModel addProjectFeature(FeatureByProject feature, HttpServletResponse httpServletResponse);
     ResponseModel addProjectSubfeature(SubFeatureByProject subfeature, HttpServletResponse httpServletResponse);
     ResponseModel addProjectAll(ProjectAllDetails projectAll, HttpServletResponse httpServletResponse);
@@ -49,7 +49,7 @@ public interface IProjectController {
 
     ResponseModel updateVision(VisionByProject visionByProject, HttpServletResponse httpServletResponse) ;
 
-    ResponseModel updateRelease(ReleaseByProject releaseByProject, HttpServletResponse httpServletResponse);
+    ResponseModel updateRelease(ProjectStockholder projectStockholder, HttpServletResponse httpServletResponse);
 
     ResponseModel updateRole(RoleByProject roleByProject, HttpServletResponse httpServletResponse);
 

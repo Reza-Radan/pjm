@@ -252,7 +252,7 @@ public class ProjectValidator {
         return resultModel;
     }
 
-    public ResultModel addProjectReleaseValidate(ReleaseByProject project){
+    public ResultModel addProjectReleaseValidate(ProjectStockholder project){
 
         if(!validateField(project.getprojectId())) {
             resultModel.setError(1);
@@ -460,7 +460,7 @@ public class ProjectValidator {
         return resultModel;
     }
 
-    public ResultModel updateProjectReleaseValidate(ReleaseByProject project){
+    public ResultModel updateProjectReleaseValidate(ProjectStockholder project){
 
         resultModel =  addProjectReleaseValidate(project);
         if(resultModel.getError() == 0)

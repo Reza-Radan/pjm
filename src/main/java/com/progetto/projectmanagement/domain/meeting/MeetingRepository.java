@@ -90,67 +90,67 @@ public class MeetingRepository {
                 .from(requirementsProperties.getKeyspace(), requirementsProperties.getMeetingByFeature()).allowFiltering()
                 .where(eq("featureId", featureId)))/*.and(QueryBuilder.eq(IissueFromString,UUID.fromString(issueId))))*/;
 
-        ArrayList<MeetingByFeature> meetingByFeatures = new ArrayList<>();
+        ArrayList<InviteMeeting> inviteMeetings = new ArrayList<>();
         for (Row row:resultsetIssue) {
-            MeetingByFeature meetingByFeature = new MeetingByFeature();
-            meetingByFeature = setMeetingByFeature(meetingByFeature,row);
-            meetingByFeatures.add(meetingByFeature);
-            responseModel.setContent(meetingByFeature);
+            InviteMeeting inviteMeeting = new InviteMeeting();
+            inviteMeeting = setMeetingByFeature(inviteMeeting,row);
+            inviteMeetings.add(inviteMeeting);
+            responseModel.setContent(inviteMeeting);
             responseModel.setResult(requirementsProperties.getSuccessful());
         }
 
-        if (meetingByFeatures.size() <= 0) {
+        if (inviteMeetings.size() <= 0) {
             logger.warn("issue null ");
             responseModel.setResult(requirementsProperties.getFail());
             responseModel.setError(resultModel.getErrorTextByLanguage(lang, "ISSUE_NOT_EXIST"));
             responseModel.setRecordCount(0);
         }else {
-            responseModel.setRecordCount(meetingByFeatures.size());
+            responseModel.setRecordCount(inviteMeetings.size());
         }
         return responseModel;
     }
 
-    private MeetingByFeature setMeetingByFeature(MeetingByFeature meetingByFeature, Row row) {
-        meetingByFeature.setMeeting_id(row.getUUID(id));
-        meetingByFeature.setfeatureId(row.getUUID(MFfeatureId));
-        meetingByFeature.setFeature_name(row.getString(MFfeatureName));
-        meetingByFeature.setMeeting_title(row.getString(MFmeetingTitle));
-        meetingByFeature.setMeeting_desc(row.getString(MFmeetingDesc));
-        meetingByFeature.setStart_date(row.getLong(MFstartDate));
-        meetingByFeature.setDuration_time(row.getString(MFdurationTime));
-        meetingByFeature.setModifyTime(row.getLong(MFmodifyTime));
-//        meetingByFeature.setCreate_member(row.get);
-        meetingByFeature.setStart_meeting(row.getLong(MFstartMeeting));
-        meetingByFeature.setProject_id(row.getUUID(MFprojectId));
-        return meetingByFeature;
+    private InviteMeeting setMeetingByFeature(InviteMeeting inviteMeeting, Row row) {
+        inviteMeeting.setMeeting_id(row.getUUID(id));
+        inviteMeeting.setfeatureId(row.getUUID(MFfeatureId));
+        inviteMeeting.setFeature_name(row.getString(MFfeatureName));
+        inviteMeeting.setMeeting_title(row.getString(MFmeetingTitle));
+        inviteMeeting.setMeeting_desc(row.getString(MFmeetingDesc));
+        inviteMeeting.setStart_date(row.getLong(MFstartDate));
+        inviteMeeting.setDuration_time(row.getString(MFdurationTime));
+        inviteMeeting.setModifyTime(row.getLong(MFmodifyTime));
+//        inviteMeeting.setCreate_member(row.get);
+        inviteMeeting.setStart_meeting(row.getLong(MFstartMeeting));
+        inviteMeeting.setProject_id(row.getUUID(MFprojectId));
+        return inviteMeeting;
     }
 
-    public ResultModel addMeetingByFeature(MeetingByFeature meetingByFeature, String lang) {
+    public ResultModel addMeetingByFeature(InviteMeeting inviteMeeting, String lang) {
         logger.warn("addMeetingByFeature" );
         batch = QueryBuilder.batch();
         try {
             UUID uuid;
             Insert meetingByFeatureInsert = QueryBuilder.insertInto(requirementsProperties.getKeyspace(), requirementsProperties.getMeetingByFeature())
                     .value(id, uuid = UUID.randomUUID())
-                    .value(MFfeatureId, meetingByFeature.getfeatureId())
-                    .value(MFfeatureName, meetingByFeature.getFeature_name())
-                    .value(MFmeetingTitle, meetingByFeature.getMeeting_title())
-                    .value(MFmeetingDesc, meetingByFeature.getMeeting_desc())
-                    .value(MFstartDate, meetingByFeature.getStart_date())
-                    .value(MFdurationTime, meetingByFeature.getDuration_time())
-                    .value(MFmodifyTime, meetingByFeature.getModifyTime());
+                    .value(MFfeatureId, inviteMeeting.getfeatureId())
+                    .value(MFfeatureName, inviteMeeting.getFeature_name())
+                    .value(MFmeetingTitle, inviteMeeting.getMeeting_title())
+                    .value(MFmeetingDesc, inviteMeeting.getMeeting_desc())
+                    .value(MFstartDate, inviteMeeting.getStart_date())
+                    .value(MFdurationTime, inviteMeeting.getDuration_time())
+                    .value(MFmodifyTime, inviteMeeting.getModifyTime());
 
 
             Insert meetingInsert = QueryBuilder.insertInto(requirementsProperties.getKeyspace(), requirementsProperties.getMeeting())
                     .value(id, uuid)
-                    .value(title, meetingByFeature.getMeeting_title())
-                    .value(desc, meetingByFeature.getMeeting_desc())
-                    .value(startDate, meetingByFeature.getStart_date())
-                    .value(durationTime, meetingByFeature.getDuration_time())
-                    .value(modifyTime, meetingByFeature.getModifyTime())
-//                .value(createMember , meetingByFeature.getCreate_member())
-                    .value(startMeeting, meetingByFeature.getStart_meeting());
-//                .value(member , meetingByFeature.getMeeting_);
+                    .value(title, inviteMeeting.getMeeting_title())
+                    .value(desc, inviteMeeting.getMeeting_desc())
+                    .value(startDate, inviteMeeting.getStart_date())
+                    .value(durationTime, inviteMeeting.getDuration_time())
+                    .value(modifyTime, inviteMeeting.getModifyTime())
+//                .value(createMember , inviteMeeting.getCreate_member())
+                    .value(startMeeting, inviteMeeting.getStart_meeting());
+//                .value(member , inviteMeeting.getMeeting_);
 
 
             batch.add(meetingByFeatureInsert);
@@ -266,14 +266,14 @@ public class MeetingRepository {
         return resultModel;
     }
 
-    public ResultModel updateMeetingByFeature(MeetingByFeature meetingByFeature, String lang){
+    public ResultModel updateMeetingByFeature(InviteMeeting inviteMeeting, String lang){
         try {
             batch = QueryBuilder.batch();
             UUID fetchId = null ,uuid = null ;
             Select.Where selectallow = QueryBuilder.select(id).
                     from(requirementsProperties.getKeyspace(), requirementsProperties.getMeetingByFeature()).allowFiltering()
-                    .where(QueryBuilder.eq(MFmeetingTitle,meetingByFeature.getMeeting_title()))
-                    .and(QueryBuilder.eq(MFfeatureId,meetingByFeature.getfeatureId()));
+                    .where(QueryBuilder.eq(MFmeetingTitle, inviteMeeting.getMeeting_title()))
+                    .and(QueryBuilder.eq(MFfeatureId, inviteMeeting.getfeatureId()));
 
             resultset = configSession.getSession().execute(selectallow);
 
@@ -283,7 +283,7 @@ public class MeetingRepository {
             }
             if(fetchId == null) {
                 uuid = UUID.randomUUID();
-//                featureId = meetingByFeature.getfeatureId();
+//                featureId = inviteMeeting.getfeatureId();
             }
             else {
                 uuid = fetchId;
@@ -291,30 +291,30 @@ public class MeetingRepository {
 
             Update.Where update = QueryBuilder.update(requirementsProperties.getKeyspace(), requirementsProperties.getMeetingByFeature()).
                     with()
-                    .and(QueryBuilder.set(MFmeetingTitle, meetingByFeature.getMeeting_title()))
-//                    .and(QueryBuilder.set(id, meetingByFeature.getMeeting_id()))
+                    .and(QueryBuilder.set(MFmeetingTitle, inviteMeeting.getMeeting_title()))
+//                    .and(QueryBuilder.set(id, inviteMeeting.getMeeting_id()))
                     .and(QueryBuilder.set(MFmodifyTime, resultModel.getInsertDate()))
-                    .and(QueryBuilder.set(MFdurationTime, meetingByFeature.getDuration_time()))
-                    .and(QueryBuilder.set(MFstartDate, meetingByFeature.getStart_date()))
-                    .and(QueryBuilder.set(MFmeetingDesc, meetingByFeature.getMeeting_desc()))
-                    .and(QueryBuilder.set(MFfeatureName, meetingByFeature.getFeature_name()))
-//                    .and(QueryBuilder.set(MFfeatureId, meetingByFeature.getfeatureId()))
-//                    .and(QueryBuilder.set(MFcreateMember, meetingByFeature.getCreate_member()))
-                    .and(QueryBuilder.set(MFprojectId, meetingByFeature.getProject_id()))
-                    .and(QueryBuilder.set(MFstartMeeting, meetingByFeature.getStart_meeting()))
-                    .where(QueryBuilder.eq(id, uuid)).and(eq(MFfeatureId , meetingByFeature.getfeatureId()));
+                    .and(QueryBuilder.set(MFdurationTime, inviteMeeting.getDuration_time()))
+                    .and(QueryBuilder.set(MFstartDate, inviteMeeting.getStart_date()))
+                    .and(QueryBuilder.set(MFmeetingDesc, inviteMeeting.getMeeting_desc()))
+                    .and(QueryBuilder.set(MFfeatureName, inviteMeeting.getFeature_name()))
+//                    .and(QueryBuilder.set(MFfeatureId, inviteMeeting.getfeatureId()))
+//                    .and(QueryBuilder.set(MFcreateMember, inviteMeeting.getCreate_member()))
+                    .and(QueryBuilder.set(MFprojectId, inviteMeeting.getProject_id()))
+                    .and(QueryBuilder.set(MFstartMeeting, inviteMeeting.getStart_meeting()))
+                    .where(QueryBuilder.eq(id, uuid)).and(eq(MFfeatureId , inviteMeeting.getfeatureId()));
 
 
             Update.Where meetingUpdate = QueryBuilder.update(requirementsProperties.getKeyspace(), requirementsProperties.getMeeting())
                     .with()
 //                    .and(QueryBuilder.set(id, uuid))
-                    .and(QueryBuilder.set(title, meetingByFeature.getMeeting_title()))
-                    .and(QueryBuilder.set(desc, meetingByFeature.getMeeting_desc()))
-                    .and(QueryBuilder.set(startDate, meetingByFeature.getStart_date()))
-                    .and(QueryBuilder.set(durationTime, meetingByFeature.getDuration_time()))
-                    .and(QueryBuilder.set(modifyTime, meetingByFeature.getModifyTime()))
+                    .and(QueryBuilder.set(title, inviteMeeting.getMeeting_title()))
+                    .and(QueryBuilder.set(desc, inviteMeeting.getMeeting_desc()))
+                    .and(QueryBuilder.set(startDate, inviteMeeting.getStart_date()))
+                    .and(QueryBuilder.set(durationTime, inviteMeeting.getDuration_time()))
+                    .and(QueryBuilder.set(modifyTime, inviteMeeting.getModifyTime()))
 //                .value(createMember , meetingByRelease.getCreate_member())
-                    .and(QueryBuilder.set(startMeeting, meetingByFeature.getStart_meeting()))
+                    .and(QueryBuilder.set(startMeeting, inviteMeeting.getStart_meeting()))
                     .where(QueryBuilder.eq(id, uuid));
 
             batch.add(update);

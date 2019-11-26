@@ -1,6 +1,6 @@
 package com.progetto.projectmanagement.controller.meeting;
 
-import com.progetto.projectmanagement.domain.meeting.MeetingByFeature;
+import com.progetto.projectmanagement.domain.meeting.InviteMeeting;
 import com.progetto.projectmanagement.domain.meeting.MeetingByProject;
 import com.progetto.projectmanagement.domain.meeting.MeetingByRelease;
 import com.progetto.projectmanagement.service.meeting.MeetingService;
@@ -54,9 +54,9 @@ public class MeetingController implements IMeetingController {
 
 
     @RequestMapping(value = "/addMeetingByFeature", method = RequestMethod.POST)
-    public ResponseModel addMeetingByFeature(@RequestBody MeetingByFeature meetingByFeature, String lang, HttpServletResponse httpServletResponse) {
+    public ResponseModel addMeetingByFeature(@RequestBody InviteMeeting inviteMeeting, String lang, HttpServletResponse httpServletResponse) {
         makeResponseClear();
-        responseModel = meetingService.addMeetingByFeature(meetingByFeature ,lang);
+        responseModel = meetingService.addMeetingByFeature(inviteMeeting,lang);
         return responseModel;
     }
 
@@ -83,9 +83,9 @@ public class MeetingController implements IMeetingController {
     }
 
     @RequestMapping(value = "/updateMeetingByFeature", method = RequestMethod.POST)
-    public ResponseModel updateMeetingByFeature(@RequestBody MeetingByFeature meetingByFeature ,String lang){
+    public ResponseModel updateMeetingByFeature(@RequestBody InviteMeeting inviteMeeting, String lang){
         makeResponseClear();
-        responseModel = meetingService.updateMeetingByFeature(meetingByFeature,lang);
+        responseModel = meetingService.updateMeetingByFeature(inviteMeeting,lang);
         return responseModel;
     }
 

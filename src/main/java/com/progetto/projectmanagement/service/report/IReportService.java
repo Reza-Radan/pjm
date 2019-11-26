@@ -1,9 +1,9 @@
 package com.progetto.projectmanagement.service.report;
 
-import com.progetto.projectmanagement.domain.report.ReportByMeeting;
+import com.progetto.projectmanagement.domain.report.ProjectReport;
 import com.progetto.projectmanagement.domain.ResponseModel;
-import com.progetto.projectmanagement.domain.report.ReportByTask;
-import com.progetto.projectmanagement.domain.report.ReportByUser;
+import com.progetto.projectmanagement.domain.report.TaskReport;
+import com.progetto.projectmanagement.domain.report.UserReport;
 import ir.dabacenter.projectmanagement.domain.report.*;
 
 import java.util.UUID;
@@ -14,13 +14,13 @@ public interface IReportService {
 	 * 
 	 * @param reposrtTask
 	 */
-	ResponseModel addReportByTask(ReportByTask reposrtTask, String lang);
+	ResponseModel addReportByTask(TaskReport reposrtTask, String lang);
 
 	/**
 	 * 
-	 * @param reportByUser
+	 * @param userReport
 	 */
-	ResponseModel addReportByUser(ReportByUser reportByUser, String lang);
+	ResponseModel addReportByUser(UserReport userReport, String lang);
 
 	/**
 	 * 
@@ -46,5 +46,5 @@ public interface IReportService {
 	 */
 	ResponseModel getReportByMeeting(UUID meetingId,String lang);
 
-	ResponseModel addReportByMeeting(ReportByMeeting reportByMeeting, String lang);
+	ResponseModel addReportByMeeting(ProjectReport projectReport, String lang);
 }

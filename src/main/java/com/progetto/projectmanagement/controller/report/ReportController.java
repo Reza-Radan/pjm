@@ -2,9 +2,9 @@ package com.progetto.projectmanagement.controller.report;
 
 import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResponseModel;
-import com.progetto.projectmanagement.domain.report.ReportByMeeting;
-import com.progetto.projectmanagement.domain.report.ReportByTask;
-import com.progetto.projectmanagement.domain.report.ReportByUser;
+import com.progetto.projectmanagement.domain.report.ProjectReport;
+import com.progetto.projectmanagement.domain.report.TaskReport;
+import com.progetto.projectmanagement.domain.report.UserReport;
 import com.progetto.projectmanagement.service.report.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,7 +57,7 @@ public class ReportController implements IReportController {
     }
 
     @RequestMapping(value = "/addReportByTask", method = RequestMethod.POST )
-    public ResponseModel addReportByTask(ReportByTask reposrtTask,String lang) {
+    public ResponseModel addReportByTask(TaskReport reposrtTask, String lang) {
         makeResponseClear();
         reposrtTask.setLang(lang);
         responseModel = reportService.addReportByTask(reposrtTask,lang);
@@ -65,18 +65,18 @@ public class ReportController implements IReportController {
     }
 
     @RequestMapping(value = "/addReportByUser", method = RequestMethod.POST )
-    public ResponseModel addReportByUser(ReportByUser reportByUser,String lang) {
+    public ResponseModel addReportByUser(UserReport userReport, String lang) {
         makeResponseClear();
-        reportByUser.setLang(lang);
-        responseModel = reportService.addReportByUser(reportByUser,lang);
+        userReport.setLang(lang);
+        responseModel = reportService.addReportByUser(userReport,lang);
         return responseModel;
     }
 
     @RequestMapping(value = "/addReportByMeeting", method = RequestMethod.POST )
-    public ResponseModel addReportByMeeting(ReportByMeeting reportByMeeting,String lang) {
+    public ResponseModel addReportByMeeting(ProjectReport projectReport, String lang) {
         makeResponseClear();
-        reportByMeeting.setLang(lang);
-        responseModel = reportService.addReportByMeeting(reportByMeeting,lang);
+        projectReport.setLang(lang);
+        responseModel = reportService.addReportByMeeting(projectReport,lang);
         return responseModel;
     }
 

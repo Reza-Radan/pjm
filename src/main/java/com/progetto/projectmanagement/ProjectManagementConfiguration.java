@@ -4,7 +4,7 @@ import com.progetto.projectmanagement.domain.issue.IssueRepository;
 import com.progetto.projectmanagement.domain.meeting.MeetingRepository;
 import com.progetto.projectmanagement.domain.member.MemberRepository;
 import com.progetto.projectmanagement.domain.project.AddProjectRepository;
-import com.progetto.projectmanagement.domain.report.ReportRepository;
+import com.progetto.projectmanagement.domain.report.SprintReport;
 import com.progetto.projectmanagement.domain.role.RoleRepository;
 import com.progetto.projectmanagement.domain.task.TaskRepository;
 import com.progetto.projectmanagement.service.attachment.AttachmentValidator;
@@ -30,7 +30,7 @@ import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResponseModel;
 import com.progetto.projectmanagement.domain.ResultModel;
 import com.progetto.projectmanagement.domain.attachment.AttachmentRepository;
-import com.progetto.projectmanagement.domain.notification.NotificationRepository;
+import com.progetto.projectmanagement.domain.activity.NotificationRepository;
 import com.progetto.projectmanagement.domain.permission.PermissionRepository;
 import com.progetto.projectmanagement.domain.project.GetProjectRepository;
 import com.progetto.projectmanagement.service.attachment.AttachmentService;
@@ -206,7 +206,7 @@ public class ProjectManagementConfiguration {
     GetProjectRepository projectGetRepo(){return new GetProjectRepository();}
 
     @Bean
-    ReportRepository reportRepo(){return new ReportRepository();}
+    SprintReport reportRepo(){return new SprintReport();}
 
     @Bean
     RoleRepository roleRepo(){return  new RoleRepository();}

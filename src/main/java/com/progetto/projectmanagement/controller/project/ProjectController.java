@@ -232,7 +232,7 @@ public class ProjectController implements IProjectController {
 
     @Override
     @RequestMapping(value = "/addRelease", method = RequestMethod.POST)
-    public ResponseModel addProjectRelease(@RequestBody ReleaseByProject release, HttpServletResponse httpServletResponse) {
+    public ResponseModel addProjectRelease(@RequestBody ProjectStockholder release, HttpServletResponse httpServletResponse) {
         makeResponseClear();
         resultModel = projectService.addProjectRelease(release);
         if (resultModel.getError() == 0){
@@ -480,9 +480,9 @@ public class ProjectController implements IProjectController {
 
     @Override
     @RequestMapping(value = "/updateRelease", method = RequestMethod.POST)
-    public ResponseModel updateRelease(@RequestBody ReleaseByProject releaseByProject, HttpServletResponse httpServletResponse) {
+    public ResponseModel updateRelease(@RequestBody ProjectStockholder projectStockholder, HttpServletResponse httpServletResponse) {
         makeResponseClear();
-        resultModel = projectService.updateRelease(releaseByProject);
+        resultModel = projectService.updateRelease(projectStockholder);
         if (resultModel.getError() == 0){
             responseModel.setResult(resultModel.getResult());
             responseModel.setStatus(httpServletResponse.getStatus());

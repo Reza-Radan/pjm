@@ -3,7 +3,7 @@ package com.progetto.projectmanagement.service.meeting;
 import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResultModel;
 import com.progetto.projectmanagement.domain.meeting.Meeting;
-import com.progetto.projectmanagement.domain.meeting.MeetingByFeature;
+import com.progetto.projectmanagement.domain.meeting.InviteMeeting;
 import com.progetto.projectmanagement.domain.meeting.MeetingByProject;
 import com.progetto.projectmanagement.domain.meeting.MeetingByRelease;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,7 @@ public class MeetingValidator {
         return resultModel;
     }
 
-    public ResultModel addMeetingByFeatureValidate(MeetingByFeature meeting,String lang){
+    public ResultModel addMeetingByFeatureValidate(InviteMeeting meeting, String lang){
 
         if(!validateField(meeting.getfeatureId())) {
             resultModel.setError(1);

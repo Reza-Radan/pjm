@@ -1,7 +1,7 @@
 package com.progetto.projectmanagement.service.meeting;
 
 import com.progetto.projectmanagement.domain.ResponseModel;
-import com.progetto.projectmanagement.domain.meeting.MeetingByFeature;
+import com.progetto.projectmanagement.domain.meeting.InviteMeeting;
 import com.progetto.projectmanagement.domain.meeting.MeetingByProject;
 import com.progetto.projectmanagement.domain.meeting.MeetingByRelease;
 import ir.dabacenter.projectmanagement.domain.*;
@@ -13,9 +13,9 @@ public interface IMeetingService {
 
 	/**
 	 * 
-	 * @param meetingByFeature
+	 * @param inviteMeeting
 	 */
-	ResponseModel addMeetingByFeature(MeetingByFeature meetingByFeature, String lang);
+	ResponseModel addMeetingByFeature(InviteMeeting inviteMeeting, String lang);
 
 	/**
 	 * 
@@ -45,11 +45,11 @@ public interface IMeetingService {
 
 	/**
 	 *
-	 * @param meetingByFeature
+	 * @param inviteMeeting
 	 * @param lang
 	 * @return
 	 */
-	ResponseModel updateMeetingByFeature(MeetingByFeature meetingByFeature, String lang);
+	ResponseModel updateMeetingByFeature(InviteMeeting inviteMeeting, String lang);
 
 
 	ResponseModel updateMeetingByProject(MeetingByProject meetingByProject, String lang);

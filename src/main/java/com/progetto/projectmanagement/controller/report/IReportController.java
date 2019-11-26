@@ -1,9 +1,9 @@
 package com.progetto.projectmanagement.controller.report;
 
 import com.progetto.projectmanagement.domain.ResponseModel;
-import com.progetto.projectmanagement.domain.report.ReportByMeeting;
-import com.progetto.projectmanagement.domain.report.ReportByTask;
-import com.progetto.projectmanagement.domain.report.ReportByUser;
+import com.progetto.projectmanagement.domain.report.ProjectReport;
+import com.progetto.projectmanagement.domain.report.TaskReport;
+import com.progetto.projectmanagement.domain.report.UserReport;
 
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ public interface IReportController {
     ResponseModel getReportByMeeting(UUID meetingId,String lang);
     ResponseModel getReportByProject(UUID projectId,String lang);
 
-    ResponseModel addReportByTask(ReportByTask reposrtTask,String lang);
-    ResponseModel addReportByUser(ReportByUser reportByUser,String lang);
-    ResponseModel addReportByMeeting(ReportByMeeting reportByMeeting,String lang);
+    ResponseModel addReportByTask(TaskReport reposrtTask, String lang);
+    ResponseModel addReportByUser(UserReport userReport, String lang);
+    ResponseModel addReportByMeeting(ProjectReport projectReport, String lang);
 }

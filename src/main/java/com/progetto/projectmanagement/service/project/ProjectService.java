@@ -274,7 +274,7 @@ public class ProjectService implements IProjectService {
 	}
 
 	@Override
-	public ResultModel addProjectRelease(ReleaseByProject release) {
+	public ResultModel addProjectRelease(ProjectStockholder release) {
 		resultModel.setResult(null);
 		resultModel.setError(0);
 		resultModel = projectValidator.addProjectReleaseValidate(release);
@@ -420,12 +420,12 @@ public class ProjectService implements IProjectService {
 	}
 
 	@Override
-	public ResultModel updateRelease(ReleaseByProject releaseByProject) {
+	public ResultModel updateRelease(ProjectStockholder projectStockholder) {
 		resultModel.setResult(null);
 		resultModel.setError(0);
-		resultModel = projectValidator.updateProjectReleaseValidate(releaseByProject);
+		resultModel = projectValidator.updateProjectReleaseValidate(projectStockholder);
 		if (resultModel.getError() == 0) {
-			resultModel  = addProjectRepository.updateRelease(releaseByProject);
+			resultModel  = addProjectRepository.updateRelease(projectStockholder);
 		}
 		return resultModel;
 	}

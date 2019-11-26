@@ -3,12 +3,10 @@ package com.progetto.projectmanagement.service.report;
 import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResponseModel;
 import com.progetto.projectmanagement.domain.ResultModel;
-import com.progetto.projectmanagement.domain.report.ReportByMeeting;
-import com.progetto.projectmanagement.domain.report.ReportByTask;
-import com.progetto.projectmanagement.domain.report.ReportByUser;
-import com.progetto.projectmanagement.domain.report.ReportRepository;
-import ir.dabacenter.projectmanagement.domain.*;
-import ir.dabacenter.projectmanagement.domain.report.*;
+import com.progetto.projectmanagement.domain.report.ProjectReport;
+import com.progetto.projectmanagement.domain.report.SprintReport;
+import com.progetto.projectmanagement.domain.report.TaskReport;
+import com.progetto.projectmanagement.domain.report.UserReport;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +18,7 @@ public class ReportService implements IReportService {
 	private ReportService reportService;
 
 	@Autowired
-    ReportRepository reportRepository;
+	SprintReport sprintReport;
 
 	@Autowired
     ResponseModel responseModel;
@@ -42,13 +40,13 @@ public class ReportService implements IReportService {
 	 * @param lang
 	 * @return
 	 */
-	public ResponseModel addReportByTask(ReportByTask reportTask, String lang) {
+	public ResponseModel addReportByTask(TaskReport reportTask, String lang) {
 		reportTask.setLang(lang);
 		resultModel = reportValidator.reportTaskValidate(reportTask);
 
 		logger.warn("addReportByTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.addReportByTask(reportTask ,lang);
+			responseModel = sprintReport.addReportByTask(reportTask ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -59,12 +57,12 @@ public class ReportService implements IReportService {
 
 
 	@Override
-	public ResponseModel addReportByMeeting(ReportByMeeting reportByMeeting, String lang) {
-		resultModel = reportValidator.reportMeetingValidate(reportByMeeting );
+	public ResponseModel addReportByMeeting(ProjectReport projectReport, String lang) {
+		resultModel = reportValidator.reportMeetingValidate(projectReport);
 
 		logger.warn("addTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			//responseModel = reportRepository.addReportByMeeting(reportByMeeting ,lang);
+			//responseModel = sprintReport.addReportByMeeting(projectReport ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -75,15 +73,15 @@ public class ReportService implements IReportService {
 
 	/**
 	 *
-	 * @param reportByUser
+	 * @param userReport
 	 */
-	public ResponseModel addReportByUser(ReportByUser reportByUser, String lang) {
-		reportByUser.setLang(lang);
-		resultModel = reportValidator.reportUserValidate(reportByUser);
+	public ResponseModel addReportByUser(UserReport userReport, String lang) {
+		userReport.setLang(lang);
+		resultModel = reportValidator.reportUserValidate(userReport);
 
 		logger.warn("addReportByTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.addReportByUser(reportByUser ,lang);
+			responseModel = sprintReport.addReportByUser(userReport,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -101,7 +99,7 @@ public class ReportService implements IReportService {
 
 		logger.warn("getReportByProject : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.getReportByProject(projectId ,lang);
+			responseModel = sprintReport.getReportByProject(projectId ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -119,7 +117,7 @@ public class ReportService implements IReportService {
 
 		logger.warn("addTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.getReportByTask(taskId ,lang);
+			responseModel = sprintReport.getReportByTask(taskId ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -137,7 +135,7 @@ public class ReportService implements IReportService {
 
 		logger.warn("addTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.getReportByUser(userId ,lang);
+			responseModel = sprintReport.getReportByUser(userId ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());
@@ -155,7 +153,7 @@ public class ReportService implements IReportService {
 
 		logger.warn("addTask : " + resultModel.getError());
 		if(resultModel.getError() == 0){
-			responseModel = reportRepository.getReportByMeeting(meetingId ,lang);
+			responseModel = sprintReport.getReportByMeeting(meetingId ,lang);
 		}else {
 			responseModel.setError(resultModel.getResult());
 			responseModel.setResult(resultModel.getResult());

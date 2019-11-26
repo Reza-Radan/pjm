@@ -3,7 +3,7 @@ package com.progetto.projectmanagement.service.meeting;
 import com.progetto.projectmanagement.domain.RequirementsProperties;
 import com.progetto.projectmanagement.domain.ResponseModel;
 import com.progetto.projectmanagement.domain.ResultModel;
-import com.progetto.projectmanagement.domain.meeting.MeetingByFeature;
+import com.progetto.projectmanagement.domain.meeting.InviteMeeting;
 import com.progetto.projectmanagement.domain.meeting.MeetingByProject;
 import com.progetto.projectmanagement.domain.meeting.MeetingByRelease;
 import com.progetto.projectmanagement.domain.meeting.MeetingRepository;
@@ -35,10 +35,10 @@ public class MeetingService implements IMeetingService {
 
 
 	@Override
-	public ResponseModel addMeetingByFeature(MeetingByFeature meetingByFeature, String lang) {
-		resultModel = meetingValidator.addMeetingByFeatureValidate(meetingByFeature ,lang);
+	public ResponseModel addMeetingByFeature(InviteMeeting inviteMeeting, String lang) {
+		resultModel = meetingValidator.addMeetingByFeatureValidate(inviteMeeting,lang);
 		if(resultModel.getError() == 0){
-			resultModel = meetingRepository.addMeetingByFeature(meetingByFeature ,lang);
+			resultModel = meetingRepository.addMeetingByFeature(inviteMeeting,lang);
 			if (resultModel.getError() ==0){
 				responseModel.setResult(resultModel.getResult());
 			}else{
@@ -117,11 +117,11 @@ public class MeetingService implements IMeetingService {
 	}
 
 	@Override
-	public ResponseModel updateMeetingByFeature(MeetingByFeature meetingByFeature, String lang) {
+	public ResponseModel updateMeetingByFeature(InviteMeeting inviteMeeting, String lang) {
 
-		resultModel = meetingValidator.addMeetingByFeatureValidate(meetingByFeature ,lang);
+		resultModel = meetingValidator.addMeetingByFeatureValidate(inviteMeeting,lang);
 		if(resultModel.getError() ==0){
-			resultModel = meetingRepository.updateMeetingByFeature(meetingByFeature,lang);
+			resultModel = meetingRepository.updateMeetingByFeature(inviteMeeting,lang);
 			if(resultModel.getError() ==0){
 				responseModel.setResult(resultModel.getResult());
 			}else {
